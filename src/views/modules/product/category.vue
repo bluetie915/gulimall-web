@@ -56,7 +56,6 @@ export default {
       })
     },
     append(data) {},
-
     remove(node, data) {
       var ids = [data.catId]
       this.$http({
