@@ -37,41 +37,7 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      menus: [],
-      defaultProps: {
-        children: 'children',
-        label: 'name',
-      },
-    }
-  },
-  created() {
-    this.getMenus()
-  },
-  methods: {
-    getMenus() {
-      this.$http({
-        url: this.$http.adornUrl('/product/category/list/tree'),
-        method: 'get',
-      }).then(({ data }) => {
-        this.menus = data.entities
-      })
-    },
-    append(data) {},
-    remove(node, data) {
-      var ids = [data.catId]
-      this.$http({
-        url: this.$http.adornUrl(`/product/category/delete`),
-        method: 'post',
-        data: this.$http.adornData(ids, false),
-      }).then(({ data }) => {
-        console.log('删除成功')
-      })
-    },
-  },
-}
+export default {}
 </script>
 
 <style>
