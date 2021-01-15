@@ -63,6 +63,9 @@
         align="center"
         label="品牌logo地址"
       >
+        <template slot-scope="scope">
+          <img style="width: 100px; height: 80px" :src="scope.row.logo" />
+        </template>
       </el-table-column>
       <el-table-column
         prop="descript"
@@ -82,7 +85,9 @@
             v-model="scope.row.showStatus"
             active-color="#13ce66"
             inactive-color="#ff4949"
-            @change="updateBrandStatus"
+            :active-value="1"
+            :inactive-value="0"
+            @change="updateBrandStatus(scope.row)"
           >
           </el-switch>
         </template>
@@ -187,6 +192,20 @@ export default {
           this.totalPage = 0
         }
         this.dataListLoading = false
+      })
+    },
+    updateBrandStatus(data) {
+      let { brandId, showStatus } = data
+      // 发送请求修改状态
+      this.$http({
+        url: this.$http.adornUrl('/product/brand/update/status'),
+        method: 'post',
+        data: this.$http.adornData({ brandId, showStatus }, false),
+      }).then(({ data }) => {
+        this.$message({
+          type: 'success',
+          message: '状态更新成功',
+        })
       })
     },
     // 每页数
