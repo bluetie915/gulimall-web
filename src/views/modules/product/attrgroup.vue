@@ -20,6 +20,7 @@
             </el-form-item>
             <el-form-item>
               <el-button @click="getDataList()">查询</el-button>
+              <el-button type="success" @click="getAllDataList()">查询全部</el-button>
               <el-button
                 v-if="isAuth('product:attrgroup:save')"
                 type="primary"
@@ -189,6 +190,11 @@ export default {
         }
         this.dataListLoading = false
       })
+    },
+    // 查询全部
+    getAllDataList(){
+      this.catId = 0;
+      this.getDataList();
     },
     // 每页数
     sizeChangeHandle(val) {

@@ -122,7 +122,7 @@ export default {
         url: this.$http.adornUrl('/product/category/list/tree'),
         method: 'get',
       }).then(({ data }) => {
-        this.menus = data.entities
+        this.menus = data.data
       })
     },
     batchDelete() {

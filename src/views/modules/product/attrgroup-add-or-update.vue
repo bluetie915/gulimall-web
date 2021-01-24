@@ -90,7 +90,7 @@ export default {
         url: this.$http.adornUrl('/product/category/list/tree'),
         method: 'get',
       }).then(({ data }) => {
-        this.categorys = data.entities
+        this.categorys = data.data
       })
     },
     init(id) {
